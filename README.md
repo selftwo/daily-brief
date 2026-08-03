@@ -31,7 +31,7 @@ Public editions live in `src/data/editions/*.json`. Private candidate intake is 
 
 ## Deployment
 
-GitHub Pages is currently published from the `gh-pages` branch for the first public prototype, because the available repository token cannot create workflow files. The reviewed Actions workflow is preserved at `deployment/pages.yml`; after granting the `workflow` scope, it can be moved to `.github/workflows/pages.yml` for automatic deployment. The site itself is configured as a project Pages site at `/daily-brief/`.
+GitHub Pages is currently published from the `gh-pages` branch for the first public prototype, because the available repository token cannot create workflow files. The published branch includes a root `.nojekyll` marker so Astro’s `_astro/` assets are served as static files. The reviewed Actions workflow is preserved at `deployment/pages.yml`; after granting the `workflow` scope, it can be moved to `.github/workflows/pages.yml` for automatic deployment. The site itself is configured as a project Pages site at `/daily-brief/`.
 
 ## Attribution and licensing
 
