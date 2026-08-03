@@ -1,0 +1,16 @@
+---
+import Base from '../../../layouts/Base.astro';
+import EditionPage from '../../../components/EditionPage.astro';
+import { getEditions, getEdition } from '../../../lib/content';
+
+export function getStaticPaths() {
+  return getEditions().map((edition) => ({ params: { date: edition.date }, props: { edition } }));
+}
+
+const { edition: passedEdition } = Astro.props;
+const edition = passedEdition || getEdition(Astro.params.date || '');
+if (!edition) throw new Error(`Missing edition: ${Astro.params.date}`);
+---
+<Base title={`${edition.title} · ${edition.date}`} description={edition.subtitle}>
+  <EditionPage edition={edition} />
+</Base>

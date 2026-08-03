@@ -1,0 +1,28 @@
+{
+  "author": null,
+  "canonical_locator": "input/meridian-harbour-joint-announcement.md",
+  "error": null,
+  "extraction": {
+    "notes": [],
+    "ok": true,
+    "tool": "sb.text",
+    "version": 1
+  },
+  "id": "src_8c4cd8d0fb38",
+  "kind": "file",
+  "lang": "en",
+  "license": "example-synthetic",
+  "locator": "input/meridian-harbour-joint-announcement.md",
+  "media_type": "text/markdown",
+  "normalized_sha256": "788d0dcc7aba7b2c9c383b344fc1e33494f2a93d20eced56434886e9abb2dc63",
+  "normalizer_version": 1,
+  "published_at": "2026-01-03",
+  "publisher": "Northline Ferries and Harbour Transit Authority",
+  "raw_sha256": "788d0dcc7aba7b2c9c383b344fc1e33494f2a93d20eced56434886e9abb2dc63",
+  "retrieved_at": "2026-07-26T07:30:29Z",
+  "schema_version": 1,
+  "status": "ready",
+  "tier": "A",
+  "tier_reason": "joint announcement issued by both parties to the agreement",
+  "title": "Joint announcement: Northline Ferries and Harbour Transit Authority"
+}

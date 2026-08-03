@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">The Daily Brief</title>
+  <desc id="desc">A black square with a white newspaper folio.</desc>
+  <rect width="64" height="64" fill="#111419"/>
+  <path d="M14 16h36v5H14zm0 11h24v4H14zm0 10h36v4H14zm0 10h18v4H14z" fill="#fff"/>
+  <circle cx="45" cy="29" r="4" fill="#a21e35"/>
+</svg>

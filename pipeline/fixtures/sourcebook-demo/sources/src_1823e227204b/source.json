@@ -1,0 +1,28 @@
+{
+  "author": null,
+  "canonical_locator": "input/northline-fare-interoperability.md",
+  "error": null,
+  "extraction": {
+    "notes": [],
+    "ok": true,
+    "tool": "sb.text",
+    "version": 1
+  },
+  "id": "src_1823e227204b",
+  "kind": "file",
+  "lang": "en",
+  "license": "example-synthetic",
+  "locator": "input/northline-fare-interoperability.md",
+  "media_type": "text/markdown",
+  "normalized_sha256": "ef0b428459b89966a22e69f5cb4cc5f8562474f4102f59cd1abed4f658682253",
+  "normalizer_version": 1,
+  "published_at": "2026-02-12",
+  "publisher": "Northline Ferries",
+  "raw_sha256": "ef0b428459b89966a22e69f5cb4cc5f8562474f4102f59cd1abed4f658682253",
+  "retrieved_at": "2026-07-26T07:30:29Z",
+  "schema_version": 1,
+  "status": "ready",
+  "tier": "A",
+  "tier_reason": "the ferry operator's own fares page: the primary source for what its readers accept",
+  "title": "Fare payment interoperability"
+}

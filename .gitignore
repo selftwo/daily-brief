@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+!.env.example
+private/
+studio/
+*.local
+
+# Never publish raw sourcebook workspaces or captures.
+sourcebook-workspace/
+pipeline/candidates/
+qa/
+qa-host/
+**/raw.*
+**/normalized.md
+**/PROVENANCE.json

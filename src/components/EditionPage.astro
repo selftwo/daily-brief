@@ -1,0 +1,94 @@
+---
+import type { Edition, Item } from '../lib/content';
+import { formatDate, sourceKindLabel, withBase } from '../lib/content';
+
+export interface Props { edition: Edition; }
+const { edition } = Astro.props;
+const lead = edition.items[0];
+const rest = edition.items.slice(1);
+const sections = [...new Set(rest.map((item) => item.section))];
+const bySection = (section: string) => rest.filter((item) => item.section === section);
+const internalLink = (url: string) => url.startsWith('/') ? withBase(url) : url;
+const isExternal = (url: string) => /^https?:\/\//.test(url);
+const statusLabel = (status: Item['status']) => status;
+---
+
+<main id="main">
+  <section class="masthead" aria-labelledby="masthead-title">
+    <div class="masthead-row">
+      <h1 id="masthead-title">The Daily Brief</h1>
+      <p class="tagline">A compact newspaper of signals, papers, essays, and field notes.</p>
+    </div>
+    <div class="edition-strip">
+      <span>Issue {String(edition.issue).padStart(3, '0')} · {formatDate(edition.date, true)}</span>
+      <span class="muted">{edition.items.length} dispatches · public edition</span>
+    </div>
+  </section>
+
+  <section class="edition-hero" aria-labelledby="edition-title">
+    <div class="eyebrow">Front page</div>
+    <h2 id="edition-title">{edition.title}</h2>
+    <p class="subtitle">{edition.subtitle}</p>
+    <p class="edition-note">{edition.note}</p>
+    <div class="edition-tools">
+      <a class="text-button" href={withBase('/archive/')}>← All editions</a>
+      <a class="text-button" href={withBase('/editorial-standards/')}>How the desk works →</a>
+    </div>
+  </section>
+
+  <nav class="section-jump" aria-label="Jump to desk">
+    <a href="#lead">Lead</a>
+    {sections.map((section) => <a href={`#${section.toLowerCase().replace(/\s+/g, '-')}`}>{section}</a>)}
+  </nav>
+
+  {lead && <section id="lead" class="lead-grid" aria-labelledby="lead-title">
+    <article class="lead-story">
+      <div class="story-kicker">{lead.kicker}</div>
+      <h3 id="lead-title"><a href={internalLink(lead.links[0]?.url || lead.sourceUrl)}>{lead.title}</a></h3>
+      <p class="story-dek">{lead.dek}</p>
+      <div class="story-meta">
+        <span>{lead.source}</span><span>{formatDate(lead.published)}</span><span>{sourceKindLabel(lead.kind)}</span><span>{lead.readTime}</span><span class="status">{statusLabel(lead.status)}</span>
+      </div>
+      <p class="story-body">{lead.summary}</p>
+      <p class="desk-note">{lead.deskNote}</p>
+      <div class="story-actions">
+        <a href={internalLink(lead.links[0]?.url || lead.sourceUrl)} target={isExternal(internalLink(lead.links[0]?.url || lead.sourceUrl)) ? '_blank' : undefined} rel={isExternal(internalLink(lead.links[0]?.url || lead.sourceUrl)) ? 'noreferrer' : undefined}>Open source ↗</a>
+        {lead.links.length > 1 && <a href={internalLink(lead.links[1].url)} target={isExternal(internalLink(lead.links[1].url)) ? '_blank' : undefined} rel={isExternal(internalLink(lead.links[1].url)) ? 'noreferrer' : undefined}>{lead.links[1].label} ↗</a>}
+      </div>
+    </article>
+    <aside class="lead-aside" aria-label="Issue index">
+      <h3>Inside this issue</h3>
+      <ol class="index-list">
+        {rest.slice(0, 4).map((item) => <li>
+          <a href={`#${item.id}`}>
+            <span class="mini-kicker">{item.section} · {sourceKindLabel(item.kind)}</span>
+            <strong>{item.title}</strong>
+          </a>
+        </li>)}
+      </ol>
+    </aside>
+  </section>}
+
+  {sections.map((section) => <section id={section.toLowerCase().replace(/\s+/g, '-')} class="brief-section" aria-labelledby={`${section.toLowerCase().replace(/\s+/g, '-')}-title`}>
+    <div class="section-heading">
+      <h3 id={`${section.toLowerCase().replace(/\s+/g, '-')}-title`}>{section}</h3>
+      <span>{bySection(section).length} {bySection(section).length === 1 ? 'dispatch' : 'dispatches'}</span>
+    </div>
+    <div class="brief-list">
+      {bySection(section).map((item) => <article id={item.id} class:list={['brief-item', item.kind === 'special' && 'special-item']}>
+        <div class="story-kicker">{item.kicker}</div>
+        <h4><a href={internalLink(item.links[0]?.url || item.sourceUrl)}>{item.title}</a></h4>
+        <p class="story-dek">{item.dek}</p>
+        <div class="story-meta"><span>{item.source}</span><span>{formatDate(item.published)}</span><span>{sourceKindLabel(item.kind)}</span><span class="status">{statusLabel(item.status)}</span></div>
+        <p class="story-body">{item.summary}</p>
+        <p class="desk-note">{item.deskNote}</p>
+        <details class="deep-reading">
+          <summary>Further reading · {item.links.length} links</summary>
+          <ul>
+            {item.links.map((link) => <li><a href={internalLink(link.url)} target={isExternal(internalLink(link.url)) ? '_blank' : undefined} rel={isExternal(internalLink(link.url)) ? 'noreferrer' : undefined}>{link.label} ↗</a></li>)}
+          </ul>
+        </details>
+      </article>)}
+    </div>
+  </section>)}
+</main>

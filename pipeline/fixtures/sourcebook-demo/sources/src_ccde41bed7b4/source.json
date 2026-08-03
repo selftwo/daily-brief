@@ -1,0 +1,28 @@
+{
+  "author": null,
+  "canonical_locator": "input/traveller-forum-gangway.md",
+  "error": null,
+  "extraction": {
+    "notes": [],
+    "ok": true,
+    "tool": "sb.text",
+    "version": 1
+  },
+  "id": "src_ccde41bed7b4",
+  "kind": "file",
+  "lang": "en",
+  "license": "example-synthetic",
+  "locator": "input/traveller-forum-gangway.md",
+  "media_type": "text/markdown",
+  "normalized_sha256": "20eff00fab3a6c5b35590e7336a994a36850ffcd71fe50406b1a6c182c5494c9",
+  "normalizer_version": 1,
+  "published_at": "2026-02-16",
+  "publisher": "Ferry Travellers Forum",
+  "raw_sha256": "20eff00fab3a6c5b35590e7336a994a36850ffcd71fe50406b1a6c182c5494c9",
+  "retrieved_at": "2026-07-26T07:30:30Z",
+  "schema_version": 1,
+  "status": "ready",
+  "tier": "C",
+  "tier_reason": "pattern evidence about what travellers actually hit at the gangway, not authority about the scheme's status",
+  "title": "Thread: Harbour card on the Northline ferry?"
+}

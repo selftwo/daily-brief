@@ -1,0 +1,149 @@
+{
+  "date": "2026-08-02",
+  "issue": 1,
+  "title": "Signals on the wire",
+  "subtitle": "Signals, papers, essays, and field notes — selected for substance.",
+  "note": "Prototype issue · public feeds only · the archive starts here.",
+  "items": [
+    {
+      "id": "karpathy-pelican",
+      "section": "Signals",
+      "kind": "social",
+      "kicker": "HACKER NEWS / SOCIAL",
+      "title": "Karpathy’s Pelican",
+      "dek": "A live Hacker News item pointing to a public post, with the discussion kept beside the original source.",
+      "summary": "The item is a useful test of the brief’s source boundary: a short public post is one object, the Hacker News thread is another, and neither should be padded into a larger claim than the links support.",
+      "deskNote": "A compact signal, with the conversation left visible rather than collapsed into a verdict.",
+      "source": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/item?id=49140998",
+      "published": "2026-08-02",
+      "status": "reported",
+      "tags": ["ai", "social", "discussion"],
+      "links": [
+        { "label": "Original public post", "url": "https://twitter.com/karpathy/status/2083749667410727319", "kind": "source" },
+        { "label": "Hacker News discussion", "url": "https://news.ycombinator.com/item?id=49140998", "kind": "discussion" }
+      ],
+      "readTime": "2 min"
+    },
+    {
+      "id": "bitnet-6502",
+      "section": "Systems",
+      "kind": "article",
+      "kicker": "HACKER NEWS / SYSTEMS",
+      "title": "An autoregressive language model on a 6502 processor",
+      "dek": "A small computing experiment that puts a language-model idea against an unusually constrained machine.",
+      "summary": "The source is a technical build log about running an autoregressive language model on a 6502 processor. It belongs in the brief because the constraint is the subject: the story is about the shape of a system when the usual abundance of memory and compute disappears.",
+      "deskNote": "A good counterweight to stories that assume scale before explaining the mechanism.",
+      "source": "Matt Beton",
+      "sourceUrl": "https://mattbeton.com/blog/bitnet-6502.html",
+      "published": "2026-07-31",
+      "status": "reported",
+      "tags": ["systems", "hardware", "experiments"],
+      "links": [
+        { "label": "Read the build log", "url": "https://mattbeton.com/blog/bitnet-6502.html", "kind": "source" },
+        { "label": "Hacker News discussion", "url": "https://news.ycombinator.com/item?id=49122655", "kind": "discussion" }
+      ],
+      "readTime": "6 min"
+    },
+    {
+      "id": "shitty-terminal",
+      "section": "Tools",
+      "kind": "repository",
+      "kicker": "SHOW HN / REPOSITORY",
+      "title": "Shitty: a fast terminal with the trade-off left in the name",
+      "dek": "A public repository that makes speed and memory safety an explicit tension instead of hiding it behind product language.",
+      "summary": "This is a small repository-shaped story: a terminal project presents its performance claim alongside the cost it accepts. The useful part is not the name or the provocation, but the clarity of the trade-off exposed by the project’s own framing.",
+      "deskNote": "The brief should make room for projects whose interesting idea is the trade-off, not the polish.",
+      "source": "GitHub",
+      "sourceUrl": "https://github.com/pg83/shitty",
+      "published": "2026-08-02",
+      "status": "reported",
+      "tags": ["tools", "systems", "open-source"],
+      "links": [
+        { "label": "Open the repository", "url": "https://github.com/pg83/shitty", "kind": "source" },
+        { "label": "Hacker News discussion", "url": "https://news.ycombinator.com/item?id=49149326", "kind": "discussion" }
+      ],
+      "readTime": "4 min"
+    },
+    {
+      "id": "askchem",
+      "section": "Research",
+      "kind": "paper",
+      "kicker": "ARXIV / RESEARCH",
+      "title": "AskChem: claim-centred infrastructure for chemistry literature synthesis",
+      "dek": "A paper proposing a literature-synthesis system organised around claims rather than ranked document lists.",
+      "summary": "AskChem frames chemistry literature synthesis as a claim-finding problem: the relevant evidence is scattered across publications, so a useful system must help locate and assemble specific findings rather than stop at a ranked list of papers.",
+      "deskNote": "The claim is the unit worth following; the document list is only the start of the work.",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2607.28618",
+      "published": "2026-07-30",
+      "status": "checked",
+      "tags": ["research", "retrieval", "literature"],
+      "links": [
+        { "label": "Read the paper", "url": "https://arxiv.org/abs/2607.28618", "kind": "source" },
+        { "label": "PDF", "url": "https://arxiv.org/pdf/2607.28618", "kind": "deep" }
+      ],
+      "readTime": "12 min"
+    },
+    {
+      "id": "aispa",
+      "section": "Research",
+      "kind": "paper",
+      "kicker": "ARXIV / AI SYSTEMS",
+      "title": "AISPA: auditing system prompts from the user side",
+      "dek": "A paper about auditing system prompts in language-model applications, a layer that is often hidden from public view.",
+      "summary": "AISPA treats system prompts as an object for audit. The paper’s premise is that these instructions govern application behaviour while remaining largely undisclosed, leaving a gap between the visible interface and the rules shaping the model underneath.",
+      "deskNote": "A useful reminder that an AI product has an instruction layer before it has a user experience.",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2607.28617",
+      "published": "2026-07-30",
+      "status": "checked",
+      "tags": ["research", "ai", "auditing"],
+      "links": [
+        { "label": "Read the paper", "url": "https://arxiv.org/abs/2607.28617", "kind": "source" },
+        { "label": "PDF", "url": "https://arxiv.org/pdf/2607.28617", "kind": "deep" }
+      ],
+      "readTime": "10 min"
+    },
+    {
+      "id": "retoken",
+      "section": "Research",
+      "kind": "paper",
+      "kicker": "ARXIV / VISION",
+      "title": "ReToken: one token for visual retrieval",
+      "dek": "A paper addressing distractor-heavy visual context and the cost of processing every token at once.",
+      "summary": "ReToken focuses on a familiar scaling problem in vision-language systems: long visual context becomes harder as distractors accumulate, while processing the whole context creates GPU-memory pressure. The proposed direction is to change the token representation rather than simply add more context.",
+      "deskNote": "The interesting move is representational: less context may require better tokens, not only larger windows.",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2607.28627",
+      "published": "2026-07-30",
+      "status": "checked",
+      "tags": ["research", "vision", "retrieval"],
+      "links": [
+        { "label": "Read the paper", "url": "https://arxiv.org/abs/2607.28627", "kind": "source" },
+        { "label": "PDF", "url": "https://arxiv.org/pdf/2607.28627", "kind": "deep" }
+      ],
+      "readTime": "11 min"
+    },
+    {
+      "id": "quiet-route",
+      "section": "Lifestyle",
+      "kind": "special",
+      "kicker": "LIFESTYLE / TRAVEL",
+      "title": "The Quieter Route",
+      "dek": "A reading packet for travel that follows food, walking, ordinary life, and attention rather than a checklist.",
+      "summary": "The first Lifestyle special gathers essays, newsletters, documentaries, podcasts, and ambient walks around a slower way of looking at place. It is a route into food culture, daily routines, local voices, and the small geography between famous sights.",
+      "deskNote": "A field notebook for the kind of travel that leaves room for a second morning.",
+      "source": "The Daily Brief / Lifestyle desk",
+      "sourceUrl": "/lifestyle/quiet-route/",
+      "published": "2026-08-02",
+      "status": "checked",
+      "tags": ["lifestyle", "travel", "food", "walking"],
+      "links": [
+        { "label": "Open the travel packet", "url": "/lifestyle/quiet-route/", "kind": "internal" },
+        { "label": "Travel source ledger", "url": "/lifestyle/quiet-route/#ledger", "kind": "deep" }
+      ],
+      "readTime": "20 min"
+    }
+  ]
+}

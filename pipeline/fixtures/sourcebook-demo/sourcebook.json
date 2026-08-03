@@ -1,0 +1,82 @@
+{
+  "artifact_type": null,
+  "blockers": [],
+  "capabilities": {
+    "image_gen": "none",
+    "tts": "none",
+    "web_fetch": "agent"
+  },
+  "config": {
+    "chunk_overlap": 240,
+    "chunk_target": 1600
+  },
+  "created_at": "2026-07-26T07:30:28Z",
+  "history": [
+    {
+      "at": "2026-07-26T07:30:28Z",
+      "note": "init",
+      "state": "INIT"
+    },
+    {
+      "at": "2026-07-26T07:30:29Z",
+      "note": "added 1 source(s)",
+      "state": "COLLECT"
+    },
+    {
+      "at": "2026-07-26T07:30:29Z",
+      "note": "added 1 source(s)",
+      "state": "COLLECT"
+    },
+    {
+      "at": "2026-07-26T07:30:29Z",
+      "note": "added 1 source(s)",
+      "state": "COLLECT"
+    },
+    {
+      "at": "2026-07-26T07:30:30Z",
+      "note": "added 1 source(s)",
+      "state": "COLLECT"
+    },
+    {
+      "at": "2026-07-26T07:30:30Z",
+      "note": "4 source(s) ready",
+      "state": "EXTRACT"
+    },
+    {
+      "at": "2026-07-26T07:30:30Z",
+      "note": "10 chunks over 4 sources",
+      "state": "CHUNK"
+    },
+    {
+      "at": "2026-07-26T07:30:30Z",
+      "note": "10 chunks indexed",
+      "state": "INDEX"
+    },
+    {
+      "at": "2026-07-26T07:30:31Z",
+      "note": "2 adjudication(s)",
+      "state": "ADJUDICATE"
+    },
+    {
+      "at": "2026-07-26T07:30:34Z",
+      "note": "packaged to /root/sourcebook/examples/demo/workspace/dist",
+      "state": "PACKAGE"
+    },
+    {
+      "at": "2026-07-26T07:30:35Z",
+      "note": "verify failed with 1 finding(s)",
+      "state": "REVISE"
+    }
+  ],
+  "lint_waivers": {},
+  "question": "Can a Harbour card be used to pay a fare on a Northline ferry right now?",
+  "revise_count": 0,
+  "sb_version": "0.1.0",
+  "schema_version": 1,
+  "state": "VERIFY",
+  "tool_versions": {
+    "chunker": 1,
+    "indexer": 1,
+    "normalizer": 1
+  }
+}

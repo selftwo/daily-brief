@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/content';
+---
+<Base title="Not found · The Daily Brief" description="That edition or page is not in the archive.">
+  <main id="main">
+    <section class="page-intro">
+      <div class="eyebrow">404 · off the wire</div>
+      <h2>That page is not in the archive.</h2>
+      <p><a href={withBase('/')}>Return to the latest edition →</a></p>
+    </section>
+  </main>
+</Base>

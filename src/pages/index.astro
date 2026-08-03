@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import EditionPage from '../components/EditionPage.astro';
+import { getEditions } from '../lib/content';
+
+const edition = getEditions()[0];
+---
+<Base title={`${edition.title} · The Daily Brief`} description={edition.subtitle}>
+  <EditionPage edition={edition} />
+</Base>

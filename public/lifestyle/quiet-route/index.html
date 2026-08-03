@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A source-grounded reading packet for solo, food-led, quiet cultural travel.">
+<title>THE QUIETER ROUTE — A travel reading packet</title>
+<style>
+  :root{
+    --paper:#f3f5f7;
+    --paper-deep:#e5e9ee;
+    --ink:#1a1b18;
+    --muted:#6b6a61;
+    --line:#bcb6a8;
+    --acid:#c9f04a;
+    --rust:#b44f32;
+    --blue:#234d68;
+    --violet:#55406d;
+    --white:#ffffff;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: Arial, Helvetica, sans-serif;
+    --mono: 'Courier New', Courier, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:#dfe4ea}
+  body{margin:0;background:#dfe4ea;color:var(--ink);font-family:var(--serif);line-height:1.48}
+  a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{color:var(--rust)}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+  .skip{position:absolute;left:-9999px;top:auto}
+  .skip:focus{left:16px;top:16px;background:var(--acid);padding:8px 12px;z-index:20;font-family:var(--sans);font-weight:700}
+  .paper{max-width:1380px;margin:24px auto;background:var(--paper);box-shadow:0 18px 60px rgba(34,31,25,.2);min-height:100vh}
+  .masthead{padding:20px 42px 0;border-bottom:1px solid var(--ink)}
+  .eyebrow,.section-label,.folio,.meta,.tag,.chip,.button-row button,.source-id,.ledger-note,.byline{font-family:var(--sans);text-transform:uppercase;letter-spacing:.11em;font-size:11px;font-weight:700}
+  .eyebrow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:9px}
+  .mast-top{display:flex;justify-content:space-between;align-items:center;padding:10px 0 2px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  h1{font-family:var(--sans);font-size:clamp(56px,10vw,148px);line-height:.82;letter-spacing:-.085em;margin:10px 0 12px;font-weight:900;max-width:950px}
+  .dek{font-size:clamp(18px,2.2vw,28px);line-height:1.12;max-width:780px;margin:0 0 22px}
+  .nav{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--ink);font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .nav a{padding:11px 15px 11px 0;margin-right:18px;text-decoration:none}
+  .nav a:hover{text-decoration:underline}
+  .section{padding:48px 42px;border-bottom:1px solid var(--ink)}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:2px solid var(--ink);padding-bottom:9px;margin-bottom:25px}
+  .section-head h2{font-family:var(--sans);font-size:clamp(28px,4vw,56px);line-height:.96;letter-spacing:-.055em;margin:0;max-width:760px}
+  .folio{color:var(--muted);white-space:nowrap}
+  .lead{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:38px;padding:44px 42px 50px;border-bottom:1px solid var(--ink)}
+  .lead h2{font-size:clamp(34px,5.5vw,78px);line-height:.96;letter-spacing:-.055em;margin:0 0 20px;max-width:900px}
+  .lead p{font-size:20px;max-width:760px;margin:0 0 16px}
+  .lead .section-label{color:var(--rust);margin-bottom:15px}
+  .brief{border-left:1px solid var(--ink);padding-left:24px;align-self:start}
+  .brief h3{font-family:var(--sans);font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 13px}
+  .brief ul{padding-left:19px;margin:0}
+  .brief li{margin:0 0 11px;font-size:16px}
+  .signal{display:inline-block;background:var(--acid);padding:4px 7px;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:10px}
+  .annotation{background:var(--paper-deep);border-left:6px solid var(--rust);padding:15px 17px;margin-top:26px;max-width:780px}
+  .annotation strong{font-family:var(--sans);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+  .annotation p{font-size:17px;margin:7px 0 0}
+  .four-up{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .desk-note{padding:20px 17px 21px;border-right:1px solid var(--ink);min-height:170px}
+  .desk-note:last-child{border-right:0}
+  .desk-note .num{font-family:var(--sans);font-size:34px;font-weight:900;letter-spacing:-.08em;color:var(--rust)}
+  .desk-note h3{font-family:var(--sans);font-size:16px;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05;margin:7px 0 8px}
+  .desk-note p{font-size:15px;margin:0;color:#3e3e38}
+  .route{background:var(--ink);color:var(--paper);padding-top:42px;padding-bottom:48px}
+  .route .section-head{border-color:var(--paper)}
+  .route .section-head h2{color:var(--paper)}
+  .route .folio{color:#b8b7aa}
+  .route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#626259;border:1px solid #626259}
+  .route-card{background:var(--ink);padding:21px 18px 22px;min-height:305px;display:flex;flex-direction:column}
+  .route-card .issue{font-family:var(--mono);font-size:12px;color:var(--acid);margin-bottom:18px}
+  .route-card h3{font-family:var(--sans);font-size:25px;line-height:.98;letter-spacing:-.04em;margin:0 0 13px}
+  .route-card p{font-size:16px;color:#d5d0c5;margin:0 0 18px}
+  .route-card .route-links{margin-top:auto;display:flex;flex-direction:column;gap:8px;font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .route-card a{color:var(--acid)}
+  .route-card a:hover{color:#fff}
+  .route-foot{display:flex;gap:20px;align-items:flex-start;margin-top:20px;color:#c6c2b8}
+  .route-foot strong{color:var(--acid);font-family:var(--sans);text-transform:uppercase;font-size:11px;letter-spacing:.1em;white-space:nowrap}
+  .route-foot p{margin:0;font-size:15px}
+  .reading-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;margin-bottom:28px}
+  .reading-intro p{font-size:20px;max-width:700px;margin:0}
+  .reading-intro aside{font-family:var(--sans);border-left:1px solid var(--ink);padding-left:18px;font-size:13px;color:var(--muted)}
+  .reading-intro aside strong{display:block;color:var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 20px;border-bottom:1px solid var(--line);padding-bottom:13px}
+  .filter-bar span{font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-right:5px}
+  .filter-bar button{appearance:none;border:1px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 9px;cursor:pointer}
+  .filter-bar button[aria-pressed="true"],.filter-bar button:hover{background:var(--acid)}
+  .source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .source-card{border:1px solid var(--ink);background:rgba(250,248,241,.35);padding:18px 18px 16px;display:flex;flex-direction:column;min-height:270px}
+  .source-card.hidden{display:none}
+  .source-card .card-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+  .source-card .source-type{font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .source-card h3{font-family:var(--sans);font-size:24px;letter-spacing:-.045em;line-height:.98;margin:8px 0 8px}
+  .source-card .author{font-size:14px;color:var(--muted);margin-bottom:12px}
+  .source-card p{font-size:16px;margin:0 0 12px}
+  .source-card blockquote{border-left:4px solid var(--acid);margin:1px 0 13px;padding:4px 0 4px 12px;font-style:italic;font-size:15px}
+  .source-card .borrow{background:var(--paper-deep);padding:10px 11px;margin-top:auto;font-size:14px}
+  .source-card .borrow strong{font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.09em;display:block;margin-bottom:4px}
+  .source-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px;font-family:var(--sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+  .source-actions a{display:inline-block;text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px}
+  .source-actions a:hover{border-color:var(--acid)}
+  .tier{font-family:var(--mono);font-size:11px;color:var(--rust);white-space:nowrap}
+  .field-section{background:var(--paper-deep)}
+  .field-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
+  .field-card{background:var(--paper);padding:20px 17px 22px;min-height:210px}
+  .field-card .field-num{font-family:var(--sans);font-weight:900;font-size:28px;letter-spacing:-.08em;color:var(--blue)}
+  .field-card h3{font-family:var(--sans);font-size:19px;line-height:1.02;margin:7px 0 8px;letter-spacing:-.03em}
+  .field-card p{font-size:15px;margin:0;color:#45443c}
+  .field-card .prompt{font-style:italic;margin-top:12px;color:var(--blue)}
+  .avoid-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:26px}
+  .avoid{background:var(--paper);padding:18px}
+  .avoid h3{font-family:var(--sans);font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px}
+  .avoid p{font-size:16px;margin:0}
+  .sourcebook{background:#f7f9fb}
+  .sourcebook .section-head{margin-bottom:18px}
+  .ledger-summary{font-family:var(--sans);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:12px}
+  .ledger{border-top:2px solid var(--ink)}
+  details.ledger-group{border-bottom:1px solid var(--ink)}
+  details.ledger-group summary{cursor:pointer;list-style:none;padding:14px 0;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+  details.ledger-group summary::-webkit-details-marker{display:none}
+  details.ledger-group summary:before{content:'+';font-family:var(--mono);font-size:18px;width:18px;display:inline-block}
+  details.ledger-group[open] summary:before{content:'−'}
+  .ledger-title{font-family:var(--sans);font-size:18px;letter-spacing:-.03em;font-weight:800;flex:1}
+  .ledger-count{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+  .ledger-body{padding:0 0 18px 37px}
+  .ledger-row{display:grid;grid-template-columns:minmax(190px,1.2fr) 1.8fr .7fr;gap:15px;border-top:1px solid var(--line);padding:12px 0 10px;align-items:start}
+  .ledger-row:first-child{border-top:0}
+  .ledger-row h4{font-family:var(--sans);font-size:14px;line-height:1.1;margin:0 0 4px}
+  .ledger-row p{font-size:14px;margin:0;color:#44443c}
+  .ledger-row .url{font-family:var(--mono);font-size:10px;overflow-wrap:anywhere;color:var(--blue)}
+  .status{font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#285c2d;font-weight:700}
+  .limits{font-size:13px!important;color:var(--muted)!important}
+  .closing{background:var(--ink);color:var(--paper);padding-bottom:55px}
+  .closing .section-head{border-color:var(--paper)}
+  .closing .section-head h2{color:var(--paper)}
+  .closing .folio{color:#b8b7aa}
+  .closing-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px}
+  .closing h3{font-family:var(--sans);font-size:30px;line-height:.98;letter-spacing:-.05em;margin:0 0 12px;color:var(--acid)}
+  .closing p{font-size:18px;max-width:700px;margin:0 0 16px;color:#e0dbcf}
+  .closing .small{font-size:14px;color:#bdb9af}
+  .last-list{border-left:1px solid #77776c;padding-left:19px}
+  .last-list ol{margin:0;padding-left:20px}
+  .last-list li{padding:5px 0;font-size:16px}
+  footer{padding:17px 42px;background:#121310;color:#b8b7aa;font-family:var(--sans);font-size:10px;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+  .js-only{display:none}
+  .js .js-only{display:block}
+  .print-note{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:18px}
+  @media (max-width:900px){
+    .paper{margin:0;box-shadow:none}
+    .masthead,.section,footer{padding-left:22px;padding-right:22px}
+    .lead{padding-left:22px;padding-right:22px;grid-template-columns:1fr}
+    .brief{border-left:0;border-top:1px solid var(--ink);padding:16px 0 0}
+    .four-up{grid-template-columns:1fr 1fr}
+    .desk-note:nth-child(2){border-right:0}
+    .desk-note:nth-child(-n+2){border-bottom:1px solid var(--ink)}
+    .route-grid{grid-template-columns:1fr 1fr}
+    .source-grid{grid-template-columns:1fr}
+    .reading-intro,.closing-grid{grid-template-columns:1fr}
+    .field-grid{grid-template-columns:1fr 1fr}
+    .ledger-row{grid-template-columns:1fr 1.5fr}
+    .ledger-row .tier-cell{grid-column:2}
+  }
+  @media (max-width:560px){
+    h1{font-size:64px}
+    .masthead{padding-top:15px}
+    .section{padding-top:34px;padding-bottom:36px}
+    .lead{padding-top:32px;padding-bottom:38px}
+    .four-up,.route-grid,.field-grid,.avoid-grid{grid-template-columns:1fr}
+    .desk-note{border-right:0!important;border-bottom:1px solid var(--ink)}
+    .desk-note:last-child{border-bottom:0}
+    .route-card{min-height:0}
+    .section-head{flex-direction:column;align-items:flex-start;gap:8px}
+    .ledger-row{grid-template-columns:1fr}
+    .ledger-row .tier-cell{grid-column:auto}
+    .ledger-body{padding-left:15px}
+    .nav a{margin-right:11px;padding-right:0}
+    .eyebrow{font-size:9px}
+  }
+  @media print{
+    html,body{background:#fff}
+    .paper{margin:0;box-shadow:none;max-width:none}
+    .nav,.filter-bar,.js-only{display:none!important}
+    .section,.lead{break-inside:avoid}
+    .route{background:#fff;color:#000}
+    .route .section-head h2,.route-card h3,.route-card p{color:#000}
+    .route-grid{background:#000}
+    .route-card{background:#fff;color:#000}
+    .route-card a{color:#000}
+    .closing{background:#fff;color:#000}
+    .closing .section-head h2,.closing h3,.closing p{color:#000}
+    footer{background:#fff;color:#000;border-top:1px solid #000}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="paper">
+  <header class="masthead" id="top">
+    <div class="eyebrow"><span>FIELD EDITION 01 · SOURCE-GROUNDED READING PACKET</span><span>SOLO / FOOD / WALK / READ</span></div>
+    <div class="mast-top"><span>THE QUIETER ROUTE</span><span>02 AUG 2026 · 29 PAGES INSPECTED</span></div>
+    <h1>THE<br>QUIETER<br>ROUTE</h1>
+    <p class="dek">A reading newspaper for travelling alone, eating into ordinary life, and letting a place become legible through repetition rather than a checklist.</p>
+    <nav class="nav" aria-label="Packet sections">
+      <a href="#route">Read in this order</a>
+      <a href="#desks">The source desks</a>
+      <a href="#field-grammar">Field grammar</a>
+      <a href="#ledger">Source ledger</a>
+    </nav>
+  </header>
+
+  <section class="lead" aria-labelledby="front-page-title">
+    <div>
+      <div class="section-label">Front page / the brief</div>
+      <h2 id="front-page-title">Travel as a way of living inside a place for a while.</h2>
+      <p>You are not looking for a more beautiful checklist. You are looking for a different unit of travel: a morning café, a market purchase, a public bench, a small walk, a dish that carries a household or a migration story, and enough unclaimed time to notice what repeats.</p>
+      <p>This packet gathers the small ecosystem around that mode. The sources do different jobs: some teach attention, some show how food reveals a social world, some record ordinary homes and streets, and some explain how to turn experience into reflection without converting it into content.</p>
+      <div class="annotation"><strong>Editorial read</strong><p>The best fit is not “slow travel” as a slogan. It is <em>ordinary-facing travel</em>: build a loose ritual, return to it, and let the place answer through food, work, atmosphere, memory, and the texture of daily life.</p></div>
+    </div>
+    <aside class="brief">
+      <h3>Your travel signal</h3>
+      <ul>
+        <li>Solo, high-walking, food-led immersion.</li>
+        <li>Culture understood through what people cook, buy, share, and make normal.</li>
+        <li>Cafés, libraries, public places, and quiet sitting are part of the itinerary.</li>
+        <li>Nature as atmosphere and human landscape, not an adventure sport.</li>
+        <li>Fiction, reading, and reflection before and after the trip.</li>
+      </ul>
+      <span class="signal">Reject the famous thing → follow the living pattern</span>
+    </aside>
+  </section>
+
+  <section class="section" aria-labelledby="four-lenses-title">
+    <div class="section-head"><h2 id="four-lenses-title">Four lenses to keep open at once</h2><span class="folio">01 / orientation</span></div>
+    <div class="four-up">
+      <article class="desk-note"><div class="num">01</div><h3>Attention</h3><p>How do you make a place interesting before it performs for you? Walking and curiosity are the instruments.</p></article>
+      <article class="desk-note"><div class="num">02</div><h3>Food</h3><p>What does a dish reveal about work, migration, class, memory, trade, religion, and the idea of a normal meal?</p></article>
+      <article class="desk-note"><div class="num">03</div><h3>Daily life</h3><p>Where do people sit, wait, repair, shop, pray, commute, and make a home? This is the cultural layer beneath the attraction.</p></article>
+      <article class="desk-note"><div class="num">04</div><h3>Reflection</h3><p>What can you carry back as a question or a changed sense of scale, rather than a pile of proof that you were there?</p></article>
+    </div>
+  </section>
+
+  <section class="section route" id="route" aria-labelledby="route-title">
+    <div class="section-head"><h2 id="route-title">The edition route: read this in four sittings</h2><span class="folio">02 / the front-to-back plan</span></div>
+    <div class="route-grid">
+      <article class="route-card">
+        <div class="issue">SITTING 01 / NOTICE</div>
+        <h3>Give the walk a reason to exist.</h3>
+        <p>Start with a walk that has a few odd rules. Then sit in a café and watch the city without asking it to entertain you.</p>
+        <div class="route-links"><a href="https://craigmod.com/ridgeline/132/" target="_blank" rel="noopener">Read: Craig Mod / 500km walk ↗</a><a href="https://craigmod.com/ridgeline/083/" target="_blank" rel="noopener">Then: Kissa by Kissa ↗</a><a href="https://www.youtube.com/watch?v=BzSMLP5KpjM" target="_blank" rel="noopener">Watch: Rambalac / rainy walk ↗</a></div>
+      </article>
+      <article class="route-card">
+        <div class="issue">SITTING 02 / EAT</div>
+        <h3>Let a meal open the social map.</h3>
+        <p>Do not begin with “best restaurants.” Begin with a dish, a setting, and the people who make the food feel ordinary or necessary.</p>
+        <div class="route-links"><a href="https://www.youtube.com/watch?v=6jUrFzyLZ1c" target="_blank" rel="noopener">Watch: Beryl / one-pot meals ↗</a><a href="https://culinarybackstreets.com/stories/queens/taste-good-a-malaysian-anchor-in-elmhurst" target="_blank" rel="noopener">Read: Culinary Backstreets ↗</a><a href="https://roadsandkingdoms.com/2015/hiroshima/" target="_blank" rel="noopener">Read: Goulding / Hiroshima ↗</a></div>
+      </article>
+      <article class="route-card">
+        <div class="issue">SITTING 03 / STAY</div>
+        <h3>Look for the lived-in world.</h3>
+        <p>Move from food to homes, migration, neighborhood life, and the unremarkable infrastructure that lets a culture continue.</p>
+        <div class="route-links"><a href="https://www.vittlesmagazine.com/p/vittles-reviews-a-restaurant-in-diaspora" target="_blank" rel="noopener">Read: Vittles / diaspora ↗</a><a href="https://www.youtube.com/watch?v=2qcsWajivnI" target="_blank" rel="noopener">Watch: Kirsten Dirksen ↗</a><a href="https://everythingisamazing.substack.com/p/welcome-to-everything-is-amazing" target="_blank" rel="noopener">Read: Sowden / curiosity ↗</a></div>
+      </article>
+      <article class="route-card">
+        <div class="issue">SITTING 04 / REFLECT</div>
+        <h3>Learn the difference between observing and collecting.</h3>
+        <p>Use travel writing as a way to hold detail, uncertainty, and another person’s world without turning the trip into a performance.</p>
+        <div class="route-links"><a href="https://rolfpotts.com/podcast/travel-memoir/" target="_blank" rel="noopener">Listen: Rolf Potts / memoir ↗</a><a href="https://outofedenwalk.nationalgeographic.org/2019-08-slow-journalists-out-edens-living-legacy-india/" target="_blank" rel="noopener">Read: Out of Eden / slow journalism ↗</a><a href="https://rolfpotts.com/deviate-writing-craft/" target="_blank" rel="noopener">Browse: Deviate craft shelf ↗</a></div>
+      </article>
+    </div>
+    <div class="route-foot"><strong>Timebox</strong><p>One sitting can be 25–45 minutes. You do not need to finish a whole archive. The point is to notice which source changes the shape of a future day.</p></div>
+  </section>
+
+  <section class="section" id="desks" aria-labelledby="desks-title">
+    <div class="section-head"><h2 id="desks-title">The source desks</h2><span class="folio">03 / the editorial map</span></div>
+    <div class="reading-intro"><p>These are not ranked creators. They are different desks in the same little newspaper. Read across them rather than subscribing to everything: one source for walking, one for food, one for the texture of homes and streets, one for the ethics of looking.</p><aside><strong>How to read the cards</strong> “Start” is the most useful first click. “Go deeper” is the next layer. “Borrow” is a practice to adapt, not a rule to imitate.</aside></div>
+    <div class="filter-bar js-only" aria-label="Filter source cards"><span>Show:</span><button type="button" data-filter="all" aria-pressed="true">All desks</button><button type="button" data-filter="attention" aria-pressed="false">Attention</button><button type="button" data-filter="food" aria-pressed="false">Food</button><button type="button" data-filter="daily-life" aria-pressed="false">Daily life</button><button type="button" data-filter="reflection" aria-pressed="false">Reflection</button></div>
+    <div class="source-grid" id="source-grid">
+      <article class="source-card" data-desk="attention reflection">
+        <div class="card-top"><span class="source-type">Newsletter / essay</span><span class="tier">A1</span></div>
+        <h3>Craig Mod / Ridgeline</h3><div class="author">Walking, Japan, literature, photography</div>
+        <p>The closest match to your travel instinct. Mod makes ordinary places into the subject: mid-sized cities, kissaten, barbershops, greengrocers, post offices, and the walk between them.</p>
+        <blockquote>“I like big walks with strange rules.”</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Invent a small ritual for each city: one food place, one public institution, one repeat walk, one day without a landmark.</div>
+        <div class="source-actions"><a href="https://craigmod.com/ridgeline/132/" target="_blank" rel="noopener">Start / 500km walk ↗</a><a href="https://craigmod.com/ridgeline/083/" target="_blank" rel="noopener">Go deeper / Kissa by Kissa ↗</a><a href="https://craigmod.com/ridgeline/033/" target="_blank" rel="noopener">Gear / low-key travel ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="attention">
+        <div class="card-top"><span class="source-type">Substack / curiosity</span><span class="tier">A1</span></div>
+        <h3>Mike Sowden / Everything Is Amazing</h3><div class="author">Curiosity, attention, wonder, science</div>
+        <p>This is not a travel guide. It is a reset for the part of travel that gets flattened by usefulness: the willingness to follow a strange question and let a place remain more interesting than your plan.</p>
+        <blockquote>Curiosity is treated here as a practice, not a personality trait.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Give yourself one apparently pointless question in every place: why this snack, why this map, why this sound, why this seating arrangement?</div>
+        <div class="source-actions"><a href="https://everythingisamazing.substack.com/p/welcome-to-everything-is-amazing" target="_blank" rel="noopener">Start / welcome essay ↗</a><a href="https://everythingisamazing.substack.com/p/why-all-our-maps-are-the-wrong-way-4d3" target="_blank" rel="noopener">Go deeper / maps ↗</a><a href="https://everythingisamazing.substack.com/" target="_blank" rel="noopener">Browse archive ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="food reflection">
+        <div class="card-top"><span class="source-type">Food newsletter / magazine</span><span class="tier">A1</span></div>
+        <h3>Vittles</h3><div class="author">Food as class, policy, migration, memory, pleasure</div>
+        <p>Use Vittles to learn how to move from “this tastes good” to “what world makes this food possible?” It is London-centered and opinionated, which is exactly why it is useful as a working model rather than a neutral database.</p>
+        <blockquote>Food is allowed to be serious things in disguise: class, economics, migration.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>When you eat, ask who is absent from the story: workers, migrants, children, home cooks, landlords, delivery riders, religious communities.</div>
+        <div class="source-actions"><a href="https://www.vittlesmagazine.com/p/vittles-reviews-a-restaurant-in-diaspora" target="_blank" rel="noopener">Start / A Restaurant in Diaspora ↗</a><a href="https://www.vittlesmagazine.com/p/why-is-food-education-so-unappetising" target="_blank" rel="noopener">Go deeper / food policy ↗</a><a href="https://www.vittlesmagazine.com/p/vittles-magazine-issue-1" target="_blank" rel="noopener">Print issue / contents ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="food daily-life">
+        <div class="card-top"><span class="source-type">Food stories / walks</span><span class="tier">A1</span></div>
+        <h3>Culinary Backstreets</h3><div class="author">Neighborhood businesses and local food histories</div>
+        <p>The useful thing here is the unit of attention: not “the city’s cuisine,” but a shop, a family, a neighborhood, a migration route, a regular, a dish that has become a local anchor.</p>
+        <blockquote>Look for the unsung local culinary heroes.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Build a food map as relationships: who makes it, who eats it, who owns the space, who remembers its older version.</div>
+        <div class="source-actions"><a href="https://culinarybackstreets.com/stories/worldwide" target="_blank" rel="noopener">Start / worldwide stories ↗</a><a href="https://culinarybackstreets.com/stories/queens/taste-good-a-malaysian-anchor-in-elmhurst" target="_blank" rel="noopener">Go deeper / Malaysian anchor ↗</a><a href="https://culinarybackstreets.com/" target="_blank" rel="noopener">City index ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="food reflection">
+        <div class="card-top"><span class="source-type">Book / longform essay</span><span class="tier">A1</span></div>
+        <h3>Matt Goulding / Roads &amp; Kingdoms</h3><div class="author">Food, history, craft, migration, place</div>
+        <p>Goulding supplies a more narrative, book-length model: a dish becomes a door into history, labor, regional identity, and the friction between what a food means locally and how an outsider receives it.</p>
+        <blockquote>Food, history, and culture are treated as one braided subject.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Follow one dish beyond the plate: its ingredients, tools, language, labor, origin story, and the people who insist on making it a certain way.</div>
+        <div class="source-actions"><a href="https://roadsandkingdoms.com/2015/hiroshima/" target="_blank" rel="noopener">Start / Hiroshima okonomiyaki ↗</a><a href="https://roadsandkingdoms.com/store/rice-noodle-fish/" target="_blank" rel="noopener">Book / Japan ↗</a><a href="https://roadsandkingdoms.com/store/grape-olive-pig/" target="_blank" rel="noopener">Book / Spain ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="food daily-life">
+        <div class="card-top"><span class="source-type">YouTube / food stories</span><span class="tier">A1</span></div>
+        <h3>Beryl Shereshewsky</h3><div class="author">Recipes, submissions, family memory, ordinary meals</div>
+        <p>Beryl is a good antidote to the idea that “a country’s food” is one famous dish. The recurring form—people sharing foods they make or remember—lets you watch cuisine as household memory and social connection.</p>
+        <blockquote>The useful question is not “is this authentic?” but “who remembers this, and when do they make it?”</blockquote>
+        <div class="borrow"><strong>Borrow</strong>In a market or café, notice the food people order when they are not performing hospitality for visitors.</div>
+        <div class="source-actions"><a href="https://www.youtube.com/@BerylShereshewsky/playlists" target="_blank" rel="noopener">Start / playlists ↗</a><a href="https://www.youtube.com/watch?v=6jUrFzyLZ1c" target="_blank" rel="noopener">Go deeper / one-pot meals ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="daily-life reflection">
+        <div class="card-top"><span class="source-type">YouTube / mini-documentaries</span><span class="tier">A1</span></div>
+        <h3>Kirsten Dirksen</h3><div class="author">Homes, craft, self-sufficiency, philosophies of life</div>
+        <p>Dirksen’s films show how values become visible in rooms, gardens, tools, transport, food systems, and work. She is adjacent rather than exact: select episodes for the way they let people explain their own arrangements.</p>
+        <blockquote>Look at the infrastructure of a life, not just its aesthetic.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>When you enter a place, look for the choices people have built into daily life: storage, shade, cooking, repair, privacy, gathering.</div>
+        <div class="source-actions"><a href="https://www.youtube.com/@kirstendirksen" target="_blank" rel="noopener">Start / channel ↗</a><a href="https://www.youtube.com/watch?v=2qcsWajivnI" target="_blank" rel="noopener">Go deeper / 50 years off-grid ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="daily-life attention">
+        <div class="card-top"><span class="source-type">YouTube / ambient walk</span><span class="tier">A1 + B2</span></div>
+        <h3>Rambalac</h3><div class="author">Unnarrated pedestrian texture, especially Japan</div>
+        <p>Rambalac gives you the visual and acoustic layer that most travel media edits out: walking pace, weather, storefront distance, empty stretches, traffic, and the feeling of being a pedestrian.</p>
+        <blockquote>“Not a vlog, no intrusive faces or talking, pure Japan.”</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Use an ambient walk before a trip as a mood and orientation exercise—not as an explanation of the place.</div>
+        <div class="source-actions"><a href="https://globalvoices.org/2019/07/21/walk-the-streets-of-japan-on-youtube-with-rambalac/" target="_blank" rel="noopener">Read / why it matters ↗</a><a href="https://www.youtube.com/watch?v=BzSMLP5KpjM" target="_blank" rel="noopener">Watch / rainy Tokyo ↗</a><a href="https://www.youtube.com/@Rambalac/videos" target="_blank" rel="noopener">Browse channel ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="reflection attention">
+        <div class="card-top"><span class="source-type">Podcast / writing craft</span><span class="tier">A1</span></div>
+        <h3>Rolf Potts / Deviate</h3><div class="author">Travel memoir, research, reportage, time, failure</div>
+        <p>Potts is the method desk. Listen for the boundary between personal expression and reporting: how to let a trip change you without making yourself the only subject in the room.</p>
+        <blockquote>Travel memoir is not the same thing as a travel guide or a diary.</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Write three lines after a day: one observed fact, one interpretation, one thing you still do not know.</div>
+        <div class="source-actions"><a href="https://rolfpotts.com/podcast/travel-memoir/" target="_blank" rel="noopener">Start / travel memoir ↗</a><a href="https://rolfpotts.com/deviate-writing-craft/" target="_blank" rel="noopener">Go deeper / craft shelf ↗</a><a href="https://rolfpotts.com/books/vagabonding-2/" target="_blank" rel="noopener">Book / Vagabonding ↗</a><a href="https://rolfpotts.com/series/deviate/" target="_blank" rel="noopener">Browse / Deviate ↗</a></div>
+      </article>
+      <article class="source-card" data-desk="reflection daily-life">
+        <div class="card-top"><span class="source-type">Longform project / journalism</span><span class="tier">A2</span></div>
+        <h3>Paul Salopek / Out of Eden Walk</h3><div class="author">Slow journalism, foot travel, ordinary people</div>
+        <p>Salopek is the extreme scale of the idea, so do not copy the heroic expedition. Read him for the discipline of moving at human speed and for the workshops that turn slow looking into a way to report ordinary lives.</p>
+        <blockquote>“An immersive style of reportage that opens new lines of storytelling.”</blockquote>
+        <div class="borrow"><strong>Borrow</strong>Stay long enough for your first impression to become a question. Let the second visit be more important than the first.</div>
+        <div class="source-actions"><a href="https://outofedenwalk.nationalgeographic.org/2019-08-slow-journalists-out-edens-living-legacy-india/" target="_blank" rel="noopener">Start / slow journalists ↗</a><a href="https://outofedenwalk.nationalgeographic.org/" target="_blank" rel="noopener">Go deeper / project ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section field-section" id="field-grammar" aria-labelledby="field-title">
+    <div class="section-head"><h2 id="field-title">The field grammar to take with you</h2><span class="folio">04 / practice, not performance</span></div>
+    <div class="field-grid">
+      <article class="field-card"><div class="field-num">01</div><h3>Choose a repeatable unit.</h3><p>One café, one market, one public institution, one street loop. A small repeatable unit creates familiarity without trapping you in a schedule.</p><p class="prompt">Ask: where could I return tomorrow?</p></article>
+      <article class="field-card"><div class="field-num">02</div><h3>Let food be a verb.</h3><p>Cook, buy, queue, share, carry, waste, save, season, serve. Watch what happens around the food, not only what arrives on the plate.</p><p class="prompt">Ask: what is a normal meal here?</p></article>
+      <article class="field-card"><div class="field-num">03</div><h3>Walk with a narrow question.</h3><p>Not “see the city.” Try “where do people wait in shade?” or “what is open before work?” The question gives the walk a spine.</p><p class="prompt">Ask: what pattern would I miss from a taxi?</p></article>
+      <article class="field-card"><div class="field-num">04</div><h3>Leave room for the unproductive.</h3><p>Reading in a café is not a failure to travel. It is a way of sharing time with a place without forcing it to become an experience.</p><p class="prompt">Ask: what am I allowed not to convert into a story?</p></article>
+      <article class="field-card"><div class="field-num">05</div><h3>Keep the person larger than the insight.</h3><p>A meal or conversation is not raw material for your self-discovery. Be curious without making the other person a symbol.</p><p class="prompt">Ask: what does my interpretation leave out?</p></article>
+      <article class="field-card"><div class="field-num">06</div><h3>Write three clean lines.</h3><p>Fact. Feeling. Open question. This is enough to keep a day alive for later reading, without turning the trip into a reporting assignment.</p><p class="prompt">Ask: what did I notice before I knew what it meant?</p></article>
+    </div>
+    <div class="avoid-grid">
+      <article class="avoid"><h3>Do not copy the mileage.</h3><p>Craig Mod’s 50-kilometre city rules are a beautiful constraint, but your version can be 5–8 kilometres, two cafés, and a train ride. The point is attention, not athletic proof.</p></article>
+      <article class="avoid"><h3>Do not romanticise “ordinary.”</h3><p>Food, neighborhoods, and homes have politics, labor, money, exclusion, and inconvenience. The quiet route is not a way to pretend those things are not there.</p></article>
+    </div>
+  </section>
+
+  <section class="section sourcebook" id="ledger" aria-labelledby="ledger-title">
+    <div class="section-head"><h2 id="ledger-title">Source ledger / the deep-link desk</h2><span class="folio">05 / provenance</span></div>
+    <div class="ledger-summary"><span><strong>29</strong> directly fetched pages across <strong>11</strong> projects / creators</span><span>All links are external, first-party where available, and marked with limits.</span><span>Reviewed 02 Aug 2026 UTC</span></div>
+    <div class="ledger">
+      <details class="ledger-group" open>
+        <summary><span class="ledger-title">Craig Mod / Ridgeline</span><span class="ledger-count">5 pages · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Newsletter archive</h4><div class="url"><a href="https://craigmod.com/ridgeline/" target="_blank" rel="noopener">craigmod.com/ridgeline/</a></div></div><div><p>Archive for a weekly newsletter on walking, Japan, literature, and photography. Use it as a river, not a syllabus.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">First-party archive; individual issues vary.</p></div></div>
+          <div class="ledger-row"><div><h4>The Next 500km+ Walk</h4><div class="url"><a href="https://craigmod.com/ridgeline/132/" target="_blank" rel="noopener">ridgeline/132/</a></div></div><div><p>Ten mid-to-smallish cities, three nights each, walking-only within cities, ordinary institutions, daily publishing.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Japan-specific and physically demanding; adapt the rule, not the mileage.</p></div></div>
+          <div class="ledger-row"><div><h4>Kissa by Kissa</h4><div class="url"><a href="https://craigmod.com/ridgeline/083/" target="_blank" rel="noopener">ridgeline/083/</a></div></div><div><p>A walking/photo/travelogue/ethnographic study of old café culture, with toast and repeated visits as the organizing device.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">A book-launch essay; use the linked book page for full context.</p></div></div>
+          <div class="ledger-row"><div><h4>Travel / Walking Gear</h4><div class="url"><a href="https://craigmod.com/ridgeline/033/" target="_blank" rel="noopener">ridgeline/033/</a></div></div><div><p>Notes on low-key bags, walking clothing, and carrying a notebook/camera without looking like overt tourist gear.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Personal gear advice; some links are affiliate-adjacent and time-sensitive.</p></div></div>
+          <div class="ledger-row"><div><h4>Walking Tokyo for Seven Days</h4><div class="url"><a href="https://craigmod.com/ridgeline/146/" target="_blank" rel="noopener">ridgeline/146/</a></div></div><div><p>A dawn walk through a familiar city, using distance to revisit how a place changed over twenty-two years.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Personal essay; not a current route guide.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Mike Sowden / Everything Is Amazing</span><span class="ledger-count">3 pages · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Newsletter home</h4><div class="url"><a href="https://everythingisamazing.substack.com/" target="_blank" rel="noopener">everythingisamazing.substack.com/</a></div></div><div><p>Archive for curiosity, attention, wonder, and science.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Adjacent to travel; use for the habit of looking.</p></div></div>
+          <div class="ledger-row"><div><h4>Welcome essay</h4><div class="url"><a href="https://everythingisamazing.substack.com/p/welcome-to-everything-is-amazing" target="_blank" rel="noopener">welcome-to-everything-is-amazing</a></div></div><div><p>Explains the newsletter’s mix of research, curiosity, wonder, whim, and the “tyranny of usefulness.”</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Author’s framing of his own project, not a travel study.</p></div></div>
+          <div class="ledger-row"><div><h4>Why all our maps are the wrong way round</h4><div class="url"><a href="https://everythingisamazing.substack.com/p/why-all-our-maps-are-the-wrong-way-4d3" target="_blank" rel="noopener">maps essay</a></div></div><div><p>A playful reminder that the map is a choice and that “facts” arrive through frames, patrons, conventions, and stories.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Popular science/storytelling; follow cited sources for factual claims.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Vittles</span><span class="ledger-count">4 pages · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Magazine home</h4><div class="url"><a href="https://www.vittlesmagazine.com/" target="_blank" rel="noopener">vittlesmagazine.com</a></div></div><div><p>Food writing and criticism with recurring attention to class, economics, migration, policy, and pleasure.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Editorial project centered on the UK, especially London.</p></div></div>
+          <div class="ledger-row"><div><h4>A Restaurant in Diaspora</h4><div class="url"><a href="https://www.vittlesmagazine.com/p/vittles-reviews-a-restaurant-in-diaspora" target="_blank" rel="noopener">restaurant-in-diaspora</a></div></div><div><p>Little Nyonya, laksa, and new Hongkonger communities in suburban southwest London.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">A single restaurant essay cannot stand for a whole community.</p></div></div>
+          <div class="ledger-row"><div><h4>Why is Food Education so Unappetising?</h4><div class="url"><a href="https://www.vittlesmagazine.com/p/why-is-food-education-so-unappetising" target="_blank" rel="noopener">food-education essay</a></div></div><div><p>Uses school food education to show how policy and political ideology become daily eating habits.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">UK policy history; the method transfers, the policy details do not.</p></div></div>
+          <div class="ledger-row"><div><h4>Issue 1 contents</h4><div class="url"><a href="https://www.vittlesmagazine.com/p/vittles-magazine-issue-1" target="_blank" rel="noopener">issue 1</a></div></div><div><p>Shows the breadth of a modern food-and-culture editorial project and its many contributors.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Contents page and magazine pitch; full issue may be paid.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Culinary Backstreets</span><span class="ledger-count">2 pages · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Worldwide stories</h4><div class="url"><a href="https://culinarybackstreets.com/stories/worldwide" target="_blank" rel="noopener">stories/worldwide</a></div></div><div><p>Editorial frame for neighborhood food stories, local businesses, and places outside the headline attractions.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">The same organization also sells tours; keep story and commercial service distinct.</p></div></div>
+          <div class="ledger-row"><div><h4>Taste Good in Elmhurst</h4><div class="url"><a href="https://culinarybackstreets.com/stories/queens/taste-good-a-malaysian-anchor-in-elmhurst" target="_blank" rel="noopener">Malaysian anchor</a></div></div><div><p>A Malaysian restaurant in Queens becomes a way into neighborhood memory, migration, regulars, and local food culture.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Local story with a specific place and authorial perspective.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Rolf Potts / Deviate</span><span class="ledger-count">3 pages + deep episode · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Writing craft shelf</h4><div class="url"><a href="https://rolfpotts.com/deviate-writing-craft/" target="_blank" rel="noopener">deviate-writing-craft</a></div></div><div><p>Curates episodes about travel memoir, research, reportage, personal expression, and narrative craft.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Podcast descriptions are a guide to listening; audio contains the fuller argument.</p></div></div>
+          <div class="ledger-row"><div><h4>Vagabonding</h4><div class="url"><a href="https://rolfpotts.com/books/vagabonding-2/" target="_blank" rel="noopener">books/vagabonding</a></div></div><div><p>A handbook for extended independent travel, useful here for thinking about how to travel and think beyond one trip.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Book description and author page; use the book for the full argument.</p></div></div>
+          <div class="ledger-row"><div><h4>Travel memoir episode</h4><div class="url"><a href="https://rolfpotts.com/podcast/travel-memoir/" target="_blank" rel="noopener">podcast/travel-memoir</a></div></div><div><p>Use this as the direct deep link for the distinction between memoir, travel writing, research, reportage, and failure.</p></div><div class="tier-cell"><span class="status">queued</span><p class="limits">Episode page was linked from the first-party craft guide; listen for full context.</p></div></div>
+          <div class="ledger-row"><div><h4>Deviate series</h4><div class="url"><a href="https://rolfpotts.com/series/deviate/" target="_blank" rel="noopener">series/deviate</a></div></div><div><p>Ongoing archive of conversations about travel, writing, time, place, culture, and creative work.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Large archive; use the packet’s selected questions as your filter.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Matt Goulding / Roads &amp; Kingdoms</span><span class="ledger-count">3 pages · A1</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Hiroshima okonomiyaki</h4><div class="url"><a href="https://roadsandkingdoms.com/2015/hiroshima/" target="_blank" rel="noopener">2015/hiroshima</a></div></div><div><p>Longform food reporting about a Guatemalan cook, Hiroshima-style okonomiyaki, identity, and belonging.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Western-authored perspective; pair with local voices when researching a destination.</p></div></div>
+          <div class="ledger-row"><div><h4>Rice, Noodle, Fish</h4><div class="url"><a href="https://roadsandkingdoms.com/store/rice-noodle-fish/" target="_blank" rel="noopener">rice-noodle-fish</a></div></div><div><p>Book-level model of linking seven regions, culinary disciplines, history, and insider information.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Publisher description; the book is the deeper source.</p></div></div>
+          <div class="ledger-row"><div><h4>Grape, Olive, Pig</h4><div class="url"><a href="https://roadsandkingdoms.com/store/grape-olive-pig/" target="_blank" rel="noopener">grape-olive-pig</a></div></div><div><p>Parallel book-length model for Spain: hidden food places, enduring dishes, and the cultural narrative around a meal.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Publisher description; use local sources to test the narrative in practice.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Out of Eden Walk / Paul Salopek</span><span class="ledger-count">2 pages · A2</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Slow Journalists</h4><div class="url"><a href="https://outofedenwalk.nationalgeographic.org/2019-08-slow-journalists-out-edens-living-legacy-india/" target="_blank" rel="noopener">slow-journalists</a></div></div><div><p>Describes slow-journalism workshops in India and an immersive reporting style built around ordinary lives.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Institutional project story; not a universal method or a travel itinerary.</p></div></div>
+          <div class="ledger-row"><div><h4>Project home</h4><div class="url"><a href="https://outofedenwalk.nationalgeographic.org/" target="_blank" rel="noopener">outofedenwalk.nationalgeographic.org</a></div></div><div><p>Long-running foot journey and collection of trail stories, contributor stories, and educational material.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Huge archive; select for pace and listening rather than expedition scale.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Video desks / Beryl, Kirsten Dirksen, Rambalac</span><span class="ledger-count">6 pages · A1 + B2</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Beryl Shereshewsky / playlists</h4><div class="url"><a href="https://www.youtube.com/@BerylShereshewsky/playlists" target="_blank" rel="noopener">YouTube playlists</a></div></div><div><p>Food videos organized around dishes, submissions, recipes, memories, and global comparison.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Creator-curated and platform-shaped; not representative sampling.</p></div></div>
+          <div class="ledger-row"><div><h4>Beryl / one-pot meals</h4><div class="url"><a href="https://www.youtube.com/watch?v=6jUrFzyLZ1c" target="_blank" rel="noopener">video / 6jUrFzyLZ1c</a></div></div><div><p>Selected as a low-friction entry point into household food, comfort, and adaptation.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">YouTube page metadata verified; watch the video for the actual edit.</p></div></div>
+          <div class="ledger-row"><div><h4>Kirsten Dirksen / channel</h4><div class="url"><a href="https://www.youtube.com/@kirstendirksen" target="_blank" rel="noopener">YouTube channel</a></div></div><div><p>Mini-documentaries on homes, simple living, craftsmanship, self-sufficiency, and philosophies of life.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Channel leans toward unusual or alternative living; choose selectively.</p></div></div>
+          <div class="ledger-row"><div><h4>Kirsten / 50 years off-grid</h4><div class="url"><a href="https://www.youtube.com/watch?v=2qcsWajivnI" target="_blank" rel="noopener">video / 2qcsWajivnI</a></div></div><div><p>Selected for its long view of a built life: land, work, food, water, power, and values made material.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">A distinctive life, not a norm; use it as a design of values.</p></div></div>
+          <div class="ledger-row"><div><h4>Rambalac / channel</h4><div class="url"><a href="https://www.youtube.com/@Rambalac/videos" target="_blank" rel="noopener">YouTube videos</a></div></div><div><p>Pedestrian walks around Japan with little or no narration, foregrounding ambient place texture.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Atmosphere without explanation; do not mistake seeing for understanding.</p></div></div>
+          <div class="ledger-row"><div><h4>Rambalac / rainy Tokyo</h4><div class="url"><a href="https://www.youtube.com/watch?v=BzSMLP5KpjM" target="_blank" rel="noopener">video / BzSMLP5KpjM</a></div></div><div><p>One selected ambient walk from Iidabashi to Higashi-Ikebukuro for pre-trip texture and pace.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">Video page metadata verified; sound and duration are best judged in the player.</p></div></div>
+        </div>
+      </details>
+      <details class="ledger-group">
+        <summary><span class="ledger-title">Global Voices / Rambalac context</span><span class="ledger-count">1 page · B2</span></summary>
+        <div class="ledger-body">
+          <div class="ledger-row"><div><h4>Walk the streets of Japan</h4><div class="url"><a href="https://globalvoices.org/2019/07/21/walk-the-streets-of-japan-on-youtube-with-rambalac/" target="_blank" rel="noopener">Global Voices essay</a></div></div><div><p>Accountable secondary context for the channel’s premise: pedestrian perspective, no intrusive face-to-camera narration, and ambient sound.</p></div><div class="tier-cell"><span class="status">reviewed</span><p class="limits">A 2019 profile; use the channel for current videos.</p></div></div>
+        </div>
+      </details>
+    </div>
+    <p class="print-note">This packet is intentionally a map, not a replacement for the sources. Open the deep links, read a little, and keep only the practices that make you more available to a place.</p>
+  </section>
+
+  <section class="section closing" aria-labelledby="closing-title">
+    <div class="section-head"><h2 id="closing-title">If you only read six things</h2><span class="folio">06 / the short shelf</span></div>
+    <div class="closing-grid">
+      <div>
+        <h3>Start with the people who make ordinary life visible.</h3>
+        <p>The packet’s center of gravity is Craig Mod’s ritualized walking, Vittles’ food-as-politics, Beryl’s food-as-memory, Rambalac’s unhurried pedestrian eye, Rolf Potts’ distinction between memoir and reportage, and Out of Eden’s discipline of human pace.</p>
+        <p class="small">Then open a destination-specific food story only after you know what you are trying to notice. That keeps research from becoming another form of checklist.</p>
+      </div>
+      <aside class="last-list"><ol><li><a href="https://craigmod.com/ridgeline/132/" target="_blank" rel="noopener">Craig Mod — The Next 500km+ Walk</a></li><li><a href="https://craigmod.com/ridgeline/083/" target="_blank" rel="noopener">Craig Mod — Kissa by Kissa</a></li><li><a href="https://www.vittlesmagazine.com/p/vittles-reviews-a-restaurant-in-diaspora" target="_blank" rel="noopener">Vittles — A Restaurant in Diaspora</a></li><li><a href="https://www.youtube.com/watch?v=6jUrFzyLZ1c" target="_blank" rel="noopener">Beryl Shereshewsky — one-pot meals</a></li><li><a href="https://rolfpotts.com/podcast/travel-memoir/" target="_blank" rel="noopener">Rolf Potts — How to write a travel memoir</a></li><li><a href="https://outofedenwalk.nationalgeographic.org/2019-08-slow-journalists-out-edens-living-legacy-india/" target="_blank" rel="noopener">Out of Eden — Slow Journalists</a></li></ol></aside>
+    </div>
+  </section>
+
+  <footer><span>The Quieter Route / Field Edition 01</span><span>Standalone HTML · no remote assets · opens from file://</span><span>Sources inspected 02 Aug 2026 UTC</span></footer>
+</main>
+<script>
+  document.documentElement.classList.add('js');
+  const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+  const cards = Array.from(document.querySelectorAll('.source-card'));
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    cards.forEach(card => {
+      const matches = filter === 'all' || (card.dataset.desk || '').split(' ').includes(filter);
+      card.classList.toggle('hidden', !matches);
+    });
+  }));
+</script>
+</body>
+</html>

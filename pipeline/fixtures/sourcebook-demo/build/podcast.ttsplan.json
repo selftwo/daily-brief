@@ -1,0 +1,155 @@
+{
+  "concat": {
+    "manifest": "build/audio/concat.txt",
+    "out": "build/audio/episode.wav"
+  },
+  "format": "wav",
+  "output_dir": "build/audio",
+  "sample_rate": 24000,
+  "schema_version": 1,
+  "segments": [
+    {
+      "id": "s0001",
+      "out": "build/audio/s0001.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ana",
+      "text": "You are getting on a Northline ferry next month and you are holding a Harbour card. Does it work?"
+    },
+    {
+      "id": "s0002",
+      "out": "build/audio/s0002.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "My instinct says yes, because I read that the two of them signed something in January."
+    },
+    {
+      "id": "s0003",
+      "out": "build/audio/s0003.wav",
+      "pause_after_ms": 600,
+      "speaker": "Ana",
+      "text": "Harbour Transit is not on Northline's live interoperability list, and a Harbour card cannot be used to pay a fare on a Northline service as of the twelfth of February 2026."
+    },
+    {
+      "id": "s0004",
+      "out": "build/audio/s0004.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "So what did they actually sign?"
+    },
+    {
+      "id": "s0005",
+      "out": "build/audio/s0005.wav",
+      "pause_after_ms": 180,
+      "speaker": "Ana",
+      "text": "Northline Ferries and the Harbour Transit Authority signed a fare interoperability agreement on the third of January 2026."
+    },
+    {
+      "id": "s0006",
+      "out": "build/audio/s0006.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ana",
+      "text": "The signed agreement covers forty-two terminals across the two networks."
+    },
+    {
+      "id": "s0007",
+      "out": "build/audio/s0007.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "Forty-two terminals and no date. That is the part that tells you where this is."
+    },
+    {
+      "id": "s0008",
+      "out": "build/audio/s0008.wav",
+      "pause_after_ms": 600,
+      "speaker": "Ana",
+      "text": "Neither operator has announced a date for passenger availability."
+    },
+    {
+      "id": "s0009",
+      "out": "build/audio/s0009.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "But I did read that the deal enables Harbour cards on Northline. I am not making that up."
+    },
+    {
+      "id": "s0010",
+      "out": "build/audio/s0010.wav",
+      "pause_after_ms": 180,
+      "speaker": "Ana",
+      "text": "You are not. Trade reporting describes the January 2026 agreement as enabling Harbour cards to be used for fare payment on Northline coastal services."
+    },
+    {
+      "id": "s0011",
+      "out": "build/audio/s0011.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ana",
+      "text": "Both of those are in the ledger, both marked contested, because one is about what the agreement is for and the other is about what the reader will hit at the gangway."
+    },
+    {
+      "id": "s0012",
+      "out": "build/audio/s0012.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "And travellers have been finding out the hard way?"
+    },
+    {
+      "id": "s0013",
+      "out": "build/audio/s0013.wav",
+      "pause_after_ms": 180,
+      "speaker": "Ana",
+      "text": "Travellers report Harbour cards being declined at the Northline gangway in December 2025 and again in February 2026."
+    },
+    {
+      "id": "s0014",
+      "out": "build/audio/s0014.wav",
+      "pause_after_ms": 600,
+      "speaker": "Ana",
+      "text": "That one is marked reported rather than checked. A forum thread tells you what people hit. It does not tell you what the scheme supports."
+    },
+    {
+      "id": "s0015",
+      "out": "build/audio/s0015.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "So what do I do next month?"
+    },
+    {
+      "id": "s0016",
+      "out": "build/audio/s0016.wav",
+      "pause_after_ms": 180,
+      "speaker": "Ana",
+      "text": "Paper tickets and cash remain available at every Northline terminal counter and at the quayside machines."
+    },
+    {
+      "id": "s0017",
+      "out": "build/audio/s0017.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ana",
+      "text": "The same travellers report that Meridian card taps work on the routes they used."
+    },
+    {
+      "id": "s0018",
+      "out": "build/audio/s0018.wav",
+      "pause_after_ms": 320,
+      "speaker": "Ravi",
+      "text": "Cash, a paper ticket, or a Meridian Card. That is ours, not the sources'."
+    },
+    {
+      "id": "s0019",
+      "out": "build/audio/s0019.wav",
+      "pause_after_ms": 600,
+      "speaker": "Ana",
+      "text": "Recheck the operator's live list before you travel. It is the page every moving claim in this episode links to."
+    }
+  ],
+  "voices": {
+    "Ana": {
+      "hint": "warm mid-range, unhurried",
+      "voice_id": null
+    },
+    "Ravi": {
+      "hint": "brighter, faster, asks the blunt question",
+      "voice_id": null
+    }
+  }
+}

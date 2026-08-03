@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { formatDate, getEditions, withBase } from '../../lib/content';
+
+const editions = getEditions();
+---
+<Base title="Archive · The Daily Brief" description="Past public editions of The Daily Brief.">
+  <main id="main">
+    <section class="masthead" aria-labelledby="archive-title">
+      <div class="masthead-row">
+        <h1 id="archive-title">Archive</h1>
+        <p class="tagline">Every edition stays dated, linked, and readable.</p>
+      </div>
+      <div class="edition-strip"><span>{editions.length} {editions.length === 1 ? 'edition' : 'editions'}</span><span class="muted">Back catalogue</span></div>
+    </section>
+    <section class="page-intro">
+      <div class="eyebrow">The back page</div>
+      <h2>Past editions</h2>
+      <p>The archive is a list rather than a recommendation engine. Each issue keeps its original date, desk structure, and source links.</p>
+    </section>
+    <section class="archive-list" aria-label="Past editions">
+      {editions.map((edition) => <article class="edition-row">
+        <div class="date">Issue {String(edition.issue).padStart(3, '0')}<br />{formatDate(edition.date)}</div>
+        <div>
+          <h3><a href={withBase(`/editions/${edition.date}/`)}>{edition.title}</a></h3>
+          <p>{edition.subtitle}</p>
+        </div>
+        <div class="count">{edition.items.length} dispatches</div>
+      </article>)}
+    </section>
+  </main>
+</Base>

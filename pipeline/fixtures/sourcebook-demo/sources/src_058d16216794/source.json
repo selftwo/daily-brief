@@ -1,0 +1,28 @@
+{
+  "author": null,
+  "canonical_locator": "input/harbour-trade-weekly.md",
+  "error": null,
+  "extraction": {
+    "notes": [],
+    "ok": true,
+    "tool": "sb.text",
+    "version": 1
+  },
+  "id": "src_058d16216794",
+  "kind": "file",
+  "lang": "en",
+  "license": "example-synthetic",
+  "locator": "input/harbour-trade-weekly.md",
+  "media_type": "text/markdown",
+  "normalized_sha256": "e9c6d9d9348f34688328f845bc49e5af5219b98a7d7cd52ac79fd79bb535de88",
+  "normalizer_version": 1,
+  "published_at": "2026-01-06",
+  "publisher": "Harbour Trade Weekly",
+  "raw_sha256": "e9c6d9d9348f34688328f845bc49e5af5219b98a7d7cd52ac79fd79bb535de88",
+  "retrieved_at": "2026-07-26T07:30:29Z",
+  "schema_version": 1,
+  "status": "ready",
+  "tier": "B",
+  "tier_reason": "bylined, dated trade reporting with named accountability",
+  "title": "Harbour and Northline sign card interoperability deal"
+}

@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/content';
+---
+<Base title="Editorial standards · The Daily Brief" description="The public sourcing and writing standards for The Daily Brief.">
+  <main id="main">
+    <section class="masthead" aria-labelledby="standards-title">
+      <div class="masthead-row">
+        <h1 id="standards-title">The desk</h1>
+        <p class="tagline">A public standard for compressed, source-led writing.</p>
+      </div>
+      <div class="edition-strip"><span>Editorial standards</span><span class="muted"><a href={withBase('/')}>Latest issue</a></span></div>
+    </section>
+    <section class="standards">
+      <div class="eyebrow">Publication note</div>
+      <h2>What gets printed</h2>
+      <div class="standards-grid">
+        <div>
+          <h3>Source before flourish</h3>
+          <p>Every dispatch names its source, date, and direct reading link. Summaries stay within the evidence available from the source. When a claim is moving, disputed, or thin, the language says so.</p>
+          <h3>Compressed, not flattened</h3>
+          <p>The desk reduces a piece to its useful shape without pretending that a paper, a discussion thread, a podcast, and a personal essay are the same kind of object.</p>
+          <h3>Public by construction</h3>
+          <p>The public edition contains no private-feed labels, saved-note metadata, personal reactions, account identity, or reader profiling. Selection can happen privately; publication remains neutral.</p>
+        </div>
+        <div>
+          <h3>Copy rules</h3>
+          <ul>
+            <li>Concrete headlines; no clickbait or inflated certainty.</li>
+            <li>No generic filler such as “this article explores” or “game-changing.”</li>
+            <li>No advice addressed to a reader and no simulated personal voice.</li>
+            <li>Short quotations remain exact and traceable.</li>
+            <li>Editorial synthesis is kept distinct from source fact.</li>
+            <li>Every item needs a deep link, not only a headline.</li>
+          </ul>
+          <h3>Evidence marks</h3>
+          <p><code>checked</code> means the desk has a primary source or paper. <code>reported</code> means the item is a public report or feed signal. <code>contested</code>, <code>moving</code>, and <code>thin</code> preserve uncertainty rather than hiding it.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

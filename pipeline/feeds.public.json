@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hacker-news",
+    "kind": "hn",
+    "label": "Hacker News",
+    "url": "https://news.ycombinator.com/rss"
+  },
+  {
+    "id": "arxiv-cs-ai",
+    "kind": "arxiv",
+    "label": "arXiv · cs.AI",
+    "url": "https://export.arxiv.org/rss/cs.AI"
+  },
+  {
+    "id": "arxiv-cs-lg",
+    "kind": "arxiv",
+    "label": "arXiv · cs.LG",
+    "url": "https://export.arxiv.org/rss/cs.LG"
+  }
+]
