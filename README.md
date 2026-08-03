@@ -27,7 +27,7 @@ The build runs three publication gates before Astro renders the site:
 
 ## Content model
 
-Public editions live in `src/data/editions/*.json`. Private candidate intake is intentionally outside this repository. Public RSS, Hacker News, arXiv, podcast, and article sources can be normalised into an edition after editorial review. Run `npm run ingest:public` to collect current public RSS/Atom candidates into the ignored `pipeline/candidates/` directory; candidates are not published automatically. A later private studio layer can supply manually selected links from a bookmark repository without exposing the origin of the selection.
+Public editions live in `src/data/editions/*.json`. Private candidate intake is intentionally outside this repository. Public RSS, Hacker News Top 100, Reddit subreddit RSS, arXiv, podcast, and article sources can be normalised into an edition after editorial review. Run `npm run ingest:public` to collect current candidates into the ignored `pipeline/candidates/` directory; candidates are not published automatically. X/Twitter AI remains manual-review intake because root posts, attached articles, quotes, and replies need source-graph separation. A later private studio layer can supply manually selected links from a bookmark repository without exposing the origin of the selection.
 
 ## Deployment
 

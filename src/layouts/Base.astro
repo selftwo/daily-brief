@@ -13,7 +13,7 @@ const {
   description = 'A public, source-grounded newspaper of signals, papers, essays, podcasts, and field notes.'
 } = Astro.props;
 ---
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-reader-system="vellum">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +27,7 @@ const {
           const stored = localStorage.getItem('daily-brief-theme');
           const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           document.documentElement.dataset.theme = stored || preferred;
+          document.documentElement.dataset.readerSystem = localStorage.getItem('daily-brief-readerSystem') || 'vellum';
           document.documentElement.dataset.readerSize = localStorage.getItem('daily-brief-readerSize') || 'comfortable';
           document.documentElement.dataset.readerWidth = localStorage.getItem('daily-brief-readerWidth') || 'comfortable';
         } catch (_) {}

@@ -1,20 +1,53 @@
 [
   {
-    "id": "hacker-news",
+    "id": "hacker-news-top100",
     "kind": "hn",
-    "label": "Hacker News",
-    "url": "https://news.ycombinator.com/rss"
+    "label": "Hacker News · Top 100",
+    "collector": "hacker-news-top",
+    "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+    "item_url": "https://hacker-news.firebaseio.com/v0/item/{id}.json",
+    "limit": 100
+  },
+  {
+    "id": "hacker-news-rss",
+    "kind": "hn",
+    "label": "Hacker News · RSS",
+    "url": "https://news.ycombinator.com/rss",
+    "limit": 12
+  },
+  {
+    "id": "reddit-artificial",
+    "kind": "reddit",
+    "label": "Reddit · r/artificial",
+    "url": "https://www.reddit.com/r/artificial/.rss?limit=25",
+    "limit": 25
+  },
+  {
+    "id": "reddit-machine-learning",
+    "kind": "reddit",
+    "label": "Reddit · r/MachineLearning",
+    "url": "https://www.reddit.com/r/MachineLearning/.rss?limit=25",
+    "limit": 25
+  },
+  {
+    "id": "reddit-local-llama",
+    "kind": "reddit",
+    "label": "Reddit · r/LocalLLaMA",
+    "url": "https://www.reddit.com/r/LocalLLaMA/.rss?limit=25",
+    "limit": 25
   },
   {
     "id": "arxiv-cs-ai",
     "kind": "arxiv",
     "label": "arXiv · cs.AI",
-    "url": "https://export.arxiv.org/rss/cs.AI"
+    "url": "https://export.arxiv.org/rss/cs.AI",
+    "limit": 12
   },
   {
     "id": "arxiv-cs-lg",
     "kind": "arxiv",
     "label": "arXiv · cs.LG",
-    "url": "https://export.arxiv.org/rss/cs.LG"
+    "url": "https://export.arxiv.org/rss/cs.LG",
+    "limit": 12
   }
 ]

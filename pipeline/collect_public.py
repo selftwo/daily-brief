@@ -12,6 +12,7 @@ import json
 import re
 import urllib.request
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -41,6 +42,52 @@ def fetch(url):
     request = urllib.request.Request(url, headers={'User-Agent': 'daily-brief-public-intake/0.1'})
     with urllib.request.urlopen(request, timeout=30) as response:
         return response.read()
+
+
+def fetch_json(url):
+    return json.loads(fetch(url))
+
+
+def hn_date(timestamp):
+    if not timestamp:
+        return ''
+    return datetime.fromtimestamp(timestamp, tz=timezone.utc).isoformat()
+
+
+def parse_hn_top(feed, limit):
+    """Skim HN's top-story pool while preserving article/discussion boundaries."""
+    ids = fetch_json(feed['url'])[:limit]
+    item_template = feed.get('item_url', 'https://hacker-news.firebaseio.com/v0/item/{id}.json')
+    items = {}
+    with ThreadPoolExecutor(max_workers=16) as executor:
+        futures = {
+            executor.submit(fetch_json, item_template.format(id=story_id)): (rank, story_id)
+            for rank, story_id in enumerate(ids, start=1)
+        }
+        for future in as_completed(futures):
+            rank, story_id = futures[future]
+            try:
+                item = future.result()
+            except Exception:
+                continue
+            if item and not item.get('dead') and not item.get('deleted'):
+                items[story_id] = (rank, item)
+    for story_id in ids:
+        if story_id not in items:
+            continue
+        rank, item = items[story_id]
+        discussion_url = f'https://news.ycombinator.com/item?id={story_id}'
+        article_url = text(item.get('url')) or discussion_url
+        yield {
+            'title': text(item.get('title')),
+            'url': article_url,
+            'discussion_url': discussion_url,
+            'published': hn_date(item.get('time')),
+            'description': text(item.get('text')),
+            'hn_rank': rank,
+            'score': item.get('score', 0),
+            'comments': item.get('descendants', 0),
+        }
 
 
 def parse_feed(feed):
@@ -77,7 +124,11 @@ def main():
     failures = []
     for feed in feeds:
         try:
-            entries = list(parse_feed(fetch(feed['url'])))[:args.limit]
+            feed_limit = int(feed.get('limit', args.limit))
+            if feed.get('collector') == 'hacker-news-top':
+                entries = list(parse_hn_top(feed, feed_limit))
+            else:
+                entries = list(parse_feed(fetch(feed['url'])))[:feed_limit]
             for entry in entries:
                 entry.update({'feed_id': feed['id'], 'feed_kind': feed['kind'], 'feed_label': feed['label']})
                 candidates.append(entry)

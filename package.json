@@ -12,7 +12,7 @@
     "check": "npm test && npm run build",
     "lint:public": "python3 pipeline/public_safety.py",
     "lint:copy": "python3 pipeline/editorial_lint.py",
-    "test": "python3 tests/test_public.py",
+    "test": "python3 tests/test_public.py && python3 tests/test_intake.py",
     "ingest:public": "python3 pipeline/collect_public.py"
   },
   "dependencies": {

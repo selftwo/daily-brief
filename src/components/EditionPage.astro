@@ -8,6 +8,8 @@ const { edition } = Astro.props;
 const lead = edition.items[0];
 const rest = edition.items.slice(1);
 const sections = [...new Set(rest.map((item) => item.section))];
+const sourceKinds = [...new Set(edition.items.map((item) => sourceKindLabel(item.kind)))];
+const sourceNames = [...new Set(edition.items.map((item) => item.source))];
 const bySection = (section: string) => rest.filter((item) => item.section === section);
 const internalLink = (url: string) => url.startsWith('/') ? withBase(url) : url;
 const isExternal = (url: string) => /^https?:\/\//.test(url);
@@ -26,8 +28,8 @@ const statusLabel = (status: Item['status']) => status;
     </div>
   </section>
 
-  <section class="edition-hero" aria-labelledby="edition-title">
-    <div class="eyebrow">Front page</div>
+  <section id="front-page" class="edition-hero" aria-labelledby="edition-title">
+    <div class="eyebrow">Front page · Headline</div>
     <h2 id="edition-title">{edition.title}</h2>
     <p class="subtitle">{edition.subtitle}</p>
     <p class="edition-note">{edition.note}</p>
@@ -38,9 +40,10 @@ const statusLabel = (status: Item['status']) => status;
     </div>
   </section>
 
-  <nav class="section-jump" aria-label="Jump to desk">
-    <a href="#lead">Lead</a>
+  <nav class="section-jump" aria-label="Edition register">
+    <a href="#front-page">Front page</a>
     {sections.map((section) => <a href={`#${section.toLowerCase().replace(/\s+/g, '-')}`}>{section}</a>)}
+    <a href="#back-page">Back page</a>
   </nav>
 
   {lead && <section id="lead" class="lead-grid" aria-labelledby="lead-title">
@@ -96,4 +99,27 @@ const statusLabel = (status: Item['status']) => status;
       </article>)}
     </div>
   </section>)}
+
+  <section id="back-page" class="back-page" aria-labelledby="back-page-title">
+    <div class="eyebrow">Back page · Reporting</div>
+    <h3 id="back-page-title">The reporting register</h3>
+    <p class="back-page-intro">A compact record of the evidence visible in this edition: {sourceKinds.join(', ')} across {sourceNames.join(', ')}. It describes the slate; it does not rank it.</p>
+    <dl class="reporting-summary">
+      <div><dt>Dispatches</dt><dd>{edition.items.length}</dd></div>
+      <div><dt>Desks</dt><dd>{sections.length}</dd></div>
+      <div><dt>Source types</dt><dd>{sourceKinds.length}</dd></div>
+    </dl>
+    <div class="reporting-register">
+      {edition.items.map((item) => <article class="reporting-row">
+        <div>
+          <span class="mini-kicker">{item.section} · {sourceKindLabel(item.kind)}</span>
+          <a href={`#${item.id}`}>{item.title}</a>
+        </div>
+        <div class="reporting-meta">
+          <span>{item.source}</span>
+          <span class="status">{statusLabel(item.status)}</span>
+        </div>
+      </article>)}
+    </div>
+  </section>
 </main>

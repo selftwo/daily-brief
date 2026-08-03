@@ -17,3 +17,19 @@ The Daily Brief uses an **Explore → Read** surface. The publication keeps its 
 ## Applied source patterns
 
 The implementation is an original publication surface informed by the calm reader, flat single-signal, and progressive-disclosure patterns in the local design-system research. It does not reproduce a branded product shell or private app content.
+
+## Reader registers
+
+The hidden-by-default `Reader` panel exposes three named registers:
+
+- **Vellum Read:** the baseline quiet reading column—cool paper, indigo signal, compact mono chrome.
+- **Eddy Paper:** slightly softer headline weight, more open leading, teal signal, and margin-led spacing.
+- **Tide Wander:** the most spacious register—longer leading, cooler blue-green surfaces, and relaxed headline tracking.
+
+Text size and reading width remain independent controls. All choices persist locally and remain optional; the default edition is still readable with JavaScript disabled.
+
+## Publication anatomy
+
+- **Front page:** one headline and lead report with source/date/kind/status trace.
+- **Sections:** typed desks such as Systems, Tools, Research, and Lifestyle; each story remains a single reading object.
+- **Back page:** a derived reporting register showing the edition’s dispatch, desk, source-type, publisher, and status evidence without ranking or personalising it.

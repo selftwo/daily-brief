@@ -1,6 +1,23 @@
 <details class="reader-controls">
   <summary>Reader</summary>
   <div class="reader-controls__panel">
+    <fieldset class="reader-system-fieldset">
+      <legend>Reading system</legend>
+      <div class="reader-system-group">
+        <button type="button" data-reader-system="vellum" aria-pressed="true">
+          <span class="reader-system-name">Vellum Read</span>
+          <span class="reader-system-note">quiet measure</span>
+        </button>
+        <button type="button" data-reader-system="eddy" aria-pressed="false">
+          <span class="reader-system-name">Eddy Paper</span>
+          <span class="reader-system-note">margin-led</span>
+        </button>
+        <button type="button" data-reader-system="tide" aria-pressed="false">
+          <span class="reader-system-name">Tide Wander</span>
+          <span class="reader-system-note">longform calm</span>
+        </button>
+      </div>
+    </fieldset>
     <fieldset>
       <legend>Text size</legend>
       <div class="reader-control-group">
@@ -24,7 +41,7 @@
     const root = document.documentElement;
     const setChoice = (attribute, datasetKey, value) => {
       root.dataset[datasetKey] = value;
-      document.querySelectorAll(`[${attribute}]`).forEach((button) => {
+      document.querySelectorAll(`button[${attribute}]`).forEach((button) => {
         button.setAttribute('aria-pressed', String(button.getAttribute(attribute) === value));
       });
       try { localStorage.setItem(`daily-brief-${datasetKey}`, value); } catch (_) {}
@@ -32,8 +49,12 @@
     const saved = (key, fallback) => {
       try { return localStorage.getItem(`daily-brief-${key}`) || fallback; } catch (_) { return fallback; }
     };
+    setChoice('data-reader-system', 'readerSystem', saved('readerSystem', 'vellum'));
     setChoice('data-reader-size', 'readerSize', saved('readerSize', 'comfortable'));
     setChoice('data-reader-width', 'readerWidth', saved('readerWidth', 'comfortable'));
+    document.querySelectorAll('[data-reader-system]').forEach((button) => {
+      button.addEventListener('click', () => setChoice('data-reader-system', 'readerSystem', button.getAttribute('data-reader-system')));
+    });
     document.querySelectorAll('[data-reader-size]').forEach((button) => {
       button.addEventListener('click', () => setChoice('data-reader-size', 'readerSize', button.getAttribute('data-reader-size')));
     });
