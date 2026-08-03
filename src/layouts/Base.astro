@@ -27,6 +27,8 @@ const {
           const stored = localStorage.getItem('daily-brief-theme');
           const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           document.documentElement.dataset.theme = stored || preferred;
+          document.documentElement.dataset.readerSize = localStorage.getItem('daily-brief-readerSize') || 'comfortable';
+          document.documentElement.dataset.readerWidth = localStorage.getItem('daily-brief-readerWidth') || 'comfortable';
         } catch (_) {}
       })();
     </script>

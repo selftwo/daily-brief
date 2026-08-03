@@ -1,0 +1,44 @@
+<details class="reader-controls">
+  <summary>Reader</summary>
+  <div class="reader-controls__panel">
+    <fieldset>
+      <legend>Text size</legend>
+      <div class="reader-control-group">
+        <button type="button" data-reader-size="small" aria-pressed="false">A−</button>
+        <button type="button" data-reader-size="comfortable" aria-pressed="true">A</button>
+        <button type="button" data-reader-size="large" aria-pressed="false">A+</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Reading width</legend>
+      <div class="reader-control-group">
+        <button type="button" data-reader-width="narrow" aria-pressed="false">Narrow</button>
+        <button type="button" data-reader-width="comfortable" aria-pressed="true">Comfort</button>
+        <button type="button" data-reader-width="wide" aria-pressed="false">Wide</button>
+      </div>
+    </fieldset>
+  </div>
+</details>
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const setChoice = (attribute, datasetKey, value) => {
+      root.dataset[datasetKey] = value;
+      document.querySelectorAll(`[${attribute}]`).forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.getAttribute(attribute) === value));
+      });
+      try { localStorage.setItem(`daily-brief-${datasetKey}`, value); } catch (_) {}
+    };
+    const saved = (key, fallback) => {
+      try { return localStorage.getItem(`daily-brief-${key}`) || fallback; } catch (_) { return fallback; }
+    };
+    setChoice('data-reader-size', 'readerSize', saved('readerSize', 'comfortable'));
+    setChoice('data-reader-width', 'readerWidth', saved('readerWidth', 'comfortable'));
+    document.querySelectorAll('[data-reader-size]').forEach((button) => {
+      button.addEventListener('click', () => setChoice('data-reader-size', 'readerSize', button.getAttribute('data-reader-size')));
+    });
+    document.querySelectorAll('[data-reader-width]').forEach((button) => {
+      button.addEventListener('click', () => setChoice('data-reader-width', 'readerWidth', button.getAttribute('data-reader-width')));
+    });
+  })();
+</script>

@@ -1,6 +1,7 @@
 ---
 import type { Edition, Item } from '../lib/content';
 import { formatDate, sourceKindLabel, withBase } from '../lib/content';
+import ReaderControls from './ReaderControls.astro';
 
 export interface Props { edition: Edition; }
 const { edition } = Astro.props;
@@ -33,6 +34,7 @@ const statusLabel = (status: Item['status']) => status;
     <div class="edition-tools">
       <a class="text-button" href={withBase('/archive/')}>← All editions</a>
       <a class="text-button" href={withBase('/editorial-standards/')}>How the desk works →</a>
+      <ReaderControls />
     </div>
   </section>
 
@@ -81,9 +83,12 @@ const statusLabel = (status: Item['status']) => status;
         <p class="story-dek">{item.dek}</p>
         <div class="story-meta"><span>{item.source}</span><span>{formatDate(item.published)}</span><span>{sourceKindLabel(item.kind)}</span><span class="status">{statusLabel(item.status)}</span></div>
         <p class="story-body">{item.summary}</p>
-        <p class="desk-note">{item.deskNote}</p>
+        <details class="desk-note-details">
+          <summary>Desk note</summary>
+          <p class="desk-note">{item.deskNote}</p>
+        </details>
         <details class="deep-reading">
-          <summary>Further reading · {item.links.length} links</summary>
+          <summary>Sources and context · {item.links.length} links</summary>
           <ul>
             {item.links.map((link) => <li><a href={internalLink(link.url)} target={isExternal(internalLink(link.url)) ? '_blank' : undefined} rel={isExternal(internalLink(link.url)) ? 'noreferrer' : undefined}>{link.label} ↗</a></li>)}
           </ul>
