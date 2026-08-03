@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>The Daily Brief</title>
+  <link>https://example.github.io/daily-brief</link>
+  <description>A public, source-grounded newspaper of signals, papers, essays, podcasts, and field notes.</description>
+    <item>
+      <title>Issue 001 · Signals on the wire</title>
+      <link>https://example.github.io/daily-brief/editions/2026-08-02/</link>
+      <guid isPermaLink="true">https://example.github.io/daily-brief/editions/2026-08-02/</guid>
+      <pubDate>Sun, 02 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Signals, papers, essays, and field notes — selected for substance.</description>
+    </item>
+</channel></rss>
