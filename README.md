@@ -31,7 +31,7 @@ Public editions live in `src/data/editions/*.json`. Private candidate intake is 
 
 ## Deployment
 
-GitHub Pages is deployed by `.github/workflows/pages.yml`. The site is configured as a project Pages site at `/daily-brief/`; the workflow supplies the repository owner to the canonical URL at build time.
+GitHub Pages is currently published from the `gh-pages` branch for the first public prototype, because the available repository token cannot create workflow files. The reviewed Actions workflow is preserved at `deployment/pages.yml`; after granting the `workflow` scope, it can be moved to `.github/workflows/pages.yml` for automatic deployment. The site itself is configured as a project Pages site at `/daily-brief/`.
 
 ## Attribution and licensing
 
